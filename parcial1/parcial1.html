@@ -10,31 +10,111 @@
     function byId(id) {
         return document.getElementById(id).value;
     }
-    vector inical (pt1,pt2){
-        pt1={x1,y1,z1};
-        pt2={x2,y2,z2};
-        //Leer datos de vo 
-        var arrs = arreglo.split(lim);
+    function vector_inicial (pt1,pt2){
+        var pt1={x1,y1,z1};
+        var pt2={x2,y2,z2};
+        document.getElementById("vo","vt").value
+        }
+        function strarr2num(arreglo, lim)
+        {
+            //Leer datos de vo 
+            var arrs = arreglo.split(lim);
             arrn =[];
             arrs.forEach((elem) => {
                 arrn.push(Number(elem))
             });
+            alert(arrn[0]+arrn[1]+arrn[2]);
             return arrn;
-    }
+        };
+    function traslacion()
+        {
+            
+            aon = vector_inicial(byId("vo"), ",")
+            atn = vector_inicial(byId("vt"), ",")
+            document.getElementById("vr").value= sum(aon, atn)
 
+        };
+        function escalado()
+        {
+            aon =  vector_inicial(byId("voe"), ",")
+            atn =  vector_inicial(byId("vte"), ",")
+            document.getElementById("vr").value= mul(aon, atn)
+
+        };
+        function sum(PT1, PT2)
+        {
+            return array1.map(function(num, idx){
+                return num + array2[idx]
+            });
+        };
+       
+        function mul(PNT1, PNT2)
+        {
+            return array1.map(function(num, idx){
+                return num * array2[idx]
+            });
+        };
+        function multiplicarvectorvector(vc1, vc2) {
+            var result = [];
+            for (var i = 0; i < 3; i++) {
+                result.push([]);
+                for (var j = 0; j < 3; j++) {
+                    var sum = 0;
+                    sum += vc1[i] * vc2[j]; 
+                }
+                result[i].push(sum);
+            }
+            return result;
+        };
+        //funcion rotación
+        function rotar() {
+            var vectorOriginal = vector_inicial("vo");
+            var angulo = parseFloat(byId("angulo"));
+            var radianes = angulo * (Math.PI / 180);
+            var vectorRotacion = [
+                [Math.cos(radianes), -Math.sin(radianes), 0],
+                [Math.sin(radianes), Math.cos(radianes), 0],
+                [0, 0, 1]
+            ];
+            var resultado = multiplicarvectorvector(vectorzRotacion, vectorOriginal);
+            
+        };
+        //efectua la transformacion segunel caso
+        function transformación(trans1,trans2){
+            trans1=document.getElementById("t1").value=selectransfo(transfo);
+            trans2=document.getElementById("t2").value=selectransfo(transfo);
+            trans2=document.getElementById("vr").value=trans2;
+        };
+        //identifica el tipo de transformacion pedida
+        function selectransfo(opcion){ 
+            var transfo; 
+        if (opcion=="R"){
+            transfo=rotar;
+            else if (opcion=="T")
+            { 
+               transfo=traslacion;
+               else if (opcion=="E")
+               {
+                 transfo=escalado;
+                 else break;
+               }
+            }
+        }
+         return transfo;
+        };
 </script>
 <body>
     <h1>
-    <center>PARCIAL PRIMER CORTE PAOLA ANDREA GARZON DONCEL  </center>
+    <center>PARCIAL PRIMER CORTE PAOLA ANDREA GARZON DONCEL</center>
     </h1>
     <h1>
-        <center>VECTOR PARA LA TRANSFORMACIÓN  </center>
+        <center>TRANSFORMACIONES CONJUNTAS </center>
         </h1>
     </p>
     <p>inserte pnt 1 del vector (coordenadas separadas por comas ):
         <textarea id="vo" ></textarea>
     </p>
-    <p>inserte pnt 1 del vector (coordenadas separadas por comas ):
+    <p>inserte pnt 2 del vector (coordenadas separadas por comas ):
         <textarea id="vt" ></textarea>
     </p>
     <p>primera transformación a realizar:
@@ -45,7 +125,7 @@
     </p>
     <button id="btn_tr" onclick="transformación()">Realizar transformación</button>
     <p>vector resultante:
-        <textarea id="t1" ></textarea>
+        <textarea id="vr" ></textarea>
     
 </body>
 
