@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+</head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+<script>
+    function byId(id) {
+        return document.getElementById(id).value;
+    }
+    vector inical (pt1,pt2){
+        pt1={x1,y1,z1};
+        pt2={x2,y2,z2};
+        //Leer datos de vo 
+        var arrs = arreglo.split(lim);
+            arrn =[];
+            arrs.forEach((elem) => {
+                arrn.push(Number(elem))
+            });
+            return arrn;
+    }
+
+</script>
+<body>
+    <h1>
+    <center>PARCIAL PRIMER CORTE PAOLA ANDREA GARZON DONCEL  </center>
+    </h1>
+    <h1>
+        <center>VECTOR PARA LA TRANSFORMACIÓN  </center>
+        </h1>
+    </p>
+    <p>inserte pnt 1 del vector (coordenadas separadas por comas ):
+        <textarea id="vo" ></textarea>
+    </p>
+    <p>inserte pnt 1 del vector (coordenadas separadas por comas ):
+        <textarea id="vt" ></textarea>
+    </p>
+    <p>primera transformación a realizar:
+        <textarea id="t1" ></textarea>
+    </p>
+    <p>segunda transformación a realizar:
+        <textarea id="t2" ></textarea>
+    </p>
+    <button id="btn_tr" onclick="transformación()">Realizar transformación</button>
+    <p>vector resultante:
+        <textarea id="t1" ></textarea>
+    
+</body>
+
+</html>
